@@ -17,7 +17,7 @@ name: Deploy
       uses: appleboy/ssh-action@v0.1.8
       with:
         host: 200.234.234.24
-        port: 2222
+        port: 22
         username: adrian
         key: ${{secrets.CLAVE}}
         script: "cd /var/www/html/tage;
