@@ -14,6 +14,6 @@ class AsociacionController extends Controller
      * Display a listing of the resource.
      */
     use DisablePagination;
-    // use DisableAuthorization;
+    use DisableAuthorization;
     protected $model = Asociacion::class;
 }
