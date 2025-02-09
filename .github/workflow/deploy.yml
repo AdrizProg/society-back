@@ -1,29 +1,20 @@
-name: deploy
+name: Deploy to vps
 
 on:
   push:
     branches:
-      
-main
-workflow_dispatch:
+      - master
 
 jobs:
   deploy:
     name: Deploy to VPS
     runs-on: ubuntu-22.04
     steps:
-      
-name: Deploy
-      uses: appleboy/ssh-action@v0.1.8
-      with:
-        host: 200.234.234.24
-        port: 22
-        username: adrian
-        key: ${{secrets.CLAVE}}
-        script: "cd /var/www/html/tage;
-          git stash;
-          git pull origin main;
-          git reset;
-          php artisan optimize:clear;
-          sudo service php8.3-fpm reload;
-          npm run build;"
+      - name: Deploy
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: 200.234.234.24
+          port: 22
+          username: adrian
+          key: ${{ secrets.PRIVATE_KEY }}
+          script: "cd /var/www/html/Ecompost/; ./.script/auto.sh"
