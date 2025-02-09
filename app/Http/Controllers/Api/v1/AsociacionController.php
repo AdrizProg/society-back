@@ -13,6 +13,7 @@ class AsociacionController extends Controller
     /**
      * Display a listing of the resource.
      */
+    // Orion
     use DisablePagination;
     use DisableAuthorization;
     protected $model = Asociacion::class;
