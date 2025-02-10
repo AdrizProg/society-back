@@ -16,5 +16,5 @@ jobs:
           host: 200.234.234.24
           port: 22
           username: adrian
-          key: ${{ secrets.PRIVATE_KEY -S }}
-          script: "cd /var/www/html/society-back/.script; ./auto.sh"
+          key: ${{ secrets.PRIVATE_KEY }}
+          script: "cd /var/www/html/society-back/.script; ./auto.sh -S"
