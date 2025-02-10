@@ -1,11 +1,13 @@
-echo "Empieza el deploy"
+#!/bin/bash
 
-cd /var/www/html/society-back
+    echo "Empieza el deploy"
 
-sudo git pull origin master
+    cd /var/www/html/society-back
 
-php artisan route:clear
+    git pull origin master
 
-npm run build
+    php artisan route:clear
 
-echo "Deploy terminado"
+    npm run build
+
+    echo "Deploy terminado"
