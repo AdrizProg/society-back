@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Asociacion extends Model
@@ -20,8 +21,8 @@ class Asociacion extends Model
         'user_id',
     ];
 
-    public function users(): HasMany
+    public function users(): BelongsTo
     {
-        return $this->HasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 }
