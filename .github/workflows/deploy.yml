@@ -17,4 +17,4 @@ jobs:
           port: 22
           username: adrian
           key: ${{ secrets.PRIVATE_KEY }}
-          script: "cd /var/www/html/society-back/; ./.script/auto.sh"
+          script: "sudo -u www-data sh /var/www/html/society-back/.script/auto.sh"
