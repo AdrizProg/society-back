@@ -4,7 +4,7 @@
 
     cd /var/www/html/society-back
 
-    git pull origin master
+    sudo git pull origin master
 
     php artisan route:clear
 
