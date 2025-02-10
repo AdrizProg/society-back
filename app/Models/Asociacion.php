@@ -11,6 +11,15 @@ class Asociacion extends Model
     /** @use HasFactory<\Database\Factories\AsociacionFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'nombre',
+        'descripcion',
+        'nif',
+        'direccion',
+        'imagen',
+        'user_id',
+    ];
+
     public function users(): HasMany
     {
         return $this->HasMany(User::class);
