@@ -43,9 +43,4 @@ class RopaHasProducto extends Model
     {
         return $this->belongsTo(RopaTipoProducto::class);
     }
-
-    public function ropaTipoProducto(): BelongsTo
-    {
-        return $this->belongsTo(RopaTipoProduct::class);
-    }
 }
