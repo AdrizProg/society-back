@@ -5,46 +5,15 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Models\RopaTipoProducto;
 use Illuminate\Http\Request;
+use Orion\Concerns\DisableAuthorization;
+use Orion\Concerns\DisablePagination;
 
 class RopaTipoProductoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(RopaTipoProducto $ropaTipoProducto)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, RopaTipoProducto $ropaTipoProducto)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(RopaTipoProducto $ropaTipoProducto)
-    {
-        //
-    }
+    use DisablePagination;
+    use DisableAuthorization;
+    protected $model = RopaTipoProducto::class;
 }
