@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://adrian.informaticamajada.es'],
+    'allowed_origins' => ['https://society-front.vercel.app/'],
 
     'allowed_origins_patterns' => [],
 
