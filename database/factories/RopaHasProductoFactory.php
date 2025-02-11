@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\Producto;
 use App\Models\RopaHasProducto;
-use App\Models\RopaTipoProduct;
 use App\Models\RopaTipoProducto;
 
 class RopaHasProductoFactory extends Factory
@@ -25,8 +24,7 @@ class RopaHasProductoFactory extends Factory
     {
         return [
             'producto_id' => Producto::factory(),
-            'ropaTipoProducto_id' => RopaTipoProduct::factory(),
-            'cantidad' => fake()->numberBetween(-10000, 10000),
+            'cantidad' => fake()->numberBetween(0, 1000),
             'ropa_tipo_producto_id' => RopaTipoProducto::factory(),
         ];
     }

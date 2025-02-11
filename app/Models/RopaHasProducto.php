@@ -17,7 +17,6 @@ class RopaHasProducto extends Model
      */
     protected $fillable = [
         'producto_id',
-        'ropaTipoProducto_id',
         'cantidad',
         'ropa_tipo_producto_id',
     ];
