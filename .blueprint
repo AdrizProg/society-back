@@ -1,3 +1,48 @@
+created:
+    - database/factories/AsociacionFactory.php
+    - database/factories/UserHasAsociacionFactory.php
+    - database/factories/RopaTipoProductoFactory.php
+    - database/factories/ProductoFactory.php
+    - database/factories/RopaHasProductoFactory.php
+    - database/factories/ImagenFactory.php
+    - database/factories/CategoriaFactory.php
+    - database/factories/CategoriaHasProductoFactory.php
+    - database/factories/PedidoFactory.php
+    - database/factories/ProductoHasPedidoFactory.php
+    - database/factories/ComentarioFactory.php
+    - database/migrations/2025_02_11_192904_create_asociacions_table.php
+    - database/migrations/2025_02_11_192905_create_user_has_asociacions_table.php
+    - database/migrations/2025_02_11_192906_create_ropa_tipo_productos_table.php
+    - database/migrations/2025_02_11_192907_create_productos_table.php
+    - database/migrations/2025_02_11_192908_create_ropa_has_productos_table.php
+    - database/migrations/2025_02_11_192909_create_imagens_table.php
+    - database/migrations/2025_02_11_192910_create_categorias_table.php
+    - database/migrations/2025_02_11_192911_create_categoria_has_productos_table.php
+    - database/migrations/2025_02_11_192912_create_pedidos_table.php
+    - database/migrations/2025_02_11_192913_create_producto_has_pedidos_table.php
+    - database/migrations/2025_02_11_192914_create_comentarios_table.php
+    - app/Models/Asociacion.php
+    - app/Models/UserHasAsociacion.php
+    - app/Models/RopaTipoProducto.php
+    - app/Models/Producto.php
+    - app/Models/RopaHasProducto.php
+    - app/Models/Imagen.php
+    - app/Models/Categoria.php
+    - app/Models/CategoriaHasProducto.php
+    - app/Models/Pedido.php
+    - app/Models/ProductoHasPedido.php
+    - app/Models/Comentario.php
+    - database/seeders/AsociacionSeeder.php
+    - database/seeders/UserHasAsociacionSeeder.php
+    - database/seeders/RopaTipoProductoSeeder.php
+    - database/seeders/ProductoSeeder.php
+    - database/seeders/RopaHasProductoSeeder.php
+    - database/seeders/ImagenSeeder.php
+    - database/seeders/CategoriaSeeder.php
+    - database/seeders/CategoriaHasProductoSeeder.php
+    - database/seeders/PedidoSeeder.php
+    - database/seeders/ProductoHasPedidoSeeder.php
+    - database/seeders/ComentarioSeeder.php
 models:
     Asociacion: { nombre: 'string:50', nif: 'strinh:9', direccion: 'string:100', descripcion: 'string:200 nullable', imagen: 'string:50 nullable', user_id: 'id foreign:user', relationships: { belongsTo: User, hasMany: 'UserHasAsociacion, Producto' } }
     UserHasAsociacion: { asociacion_id: 'id foreign:asociacion', user_id: 'id foreign:user', relationships: { belongsTo: 'User, Asociacion' } }
