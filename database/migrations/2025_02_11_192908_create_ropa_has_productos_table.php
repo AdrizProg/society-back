@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('ropa_has_productos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('producto_id')->constrained();
-            $table->foreignId('ropaTipoProducto_id')->constrained('ropa_tipo_products');
             $table->integer('cantidad');
             $table->foreignId('ropa_tipo_producto_id');
             $table->timestamps();
