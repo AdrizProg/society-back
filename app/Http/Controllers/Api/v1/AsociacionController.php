@@ -17,4 +17,7 @@ class AsociacionController extends Controller
     use DisablePagination;
     use DisableAuthorization;
     protected $model = Asociacion::class;
+
+    protected $relations = ['user'];
+
 }

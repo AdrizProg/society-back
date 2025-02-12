@@ -17,5 +17,5 @@ class RopaTipoProductoController extends Controller
     use DisableAuthorization;
     protected $model = RopaTipoProducto::class;
 
-    protected $relation = 'tipoProducto';
+    protected $relation = 'ropaTipoProducto';
 }
