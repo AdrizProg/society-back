@@ -16,4 +16,6 @@ class RopaTipoProductoController extends Controller
     use DisablePagination;
     use DisableAuthorization;
     protected $model = RopaTipoProducto::class;
+
+    protected $relation = 'tipoProducto';
 }
