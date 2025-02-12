@@ -24,7 +24,7 @@ class RopaHasProductoFactory extends Factory
     {
         return [
             'producto_id' => Producto::factory(),
-            'cantidad' => fake()->numberBetween(0, 1000),
+            'cantidad' => fake()->numberBetween(0, 10000),
             'ropa_tipo_producto_id' => RopaTipoProducto::factory(),
         ];
     }
