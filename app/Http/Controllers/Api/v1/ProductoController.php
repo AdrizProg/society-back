@@ -14,5 +14,5 @@ class ProductoController extends Controller
 
     protected $model = Producto::class;
 
-    protected $relations = ['pedidos']; // Relación corregida
+    protected $relations = ['categorias'];
 }
