@@ -16,5 +16,5 @@ class ProductoHasPedidoController extends Controller
     use DisablePagination;
     use DisableAuthorization;
     protected $model = ProductoHasPedido::class;
-    protected $relation = 'pedido';
+    protected $relation = ['pedido', 'producto'];
 }

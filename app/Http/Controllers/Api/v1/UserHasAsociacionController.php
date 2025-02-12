@@ -17,5 +17,5 @@ class UserHasAsociacionController extends Controller
     use DisableAuthorization;
     protected $model = UserHasAsociacion::class;
 
-    protected $relation = 'asociacion';
+    protected $relation = ['asociacion', 'user'];
 }
