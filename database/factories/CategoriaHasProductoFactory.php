@@ -2,10 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Categoria;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\CategoriaHasProducto;
-use App\Models\Categorium;
 use App\Models\Producto;
 
 class CategoriaHasProductoFactory extends Factory
@@ -24,7 +24,7 @@ class CategoriaHasProductoFactory extends Factory
     {
         return [
             'producto_id' => Producto::factory(),
-            'categoria_id' => Categorium::factory(),
+            'categoria_id' => Categoria::factory(),
         ];
     }
 }
