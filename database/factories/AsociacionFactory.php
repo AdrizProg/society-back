@@ -22,11 +22,11 @@ class AsociacionFactory extends Factory
     public function definition(): array
     {
         return [
-            'nombre' => fake()->regexify('[A-Za-z0-9]{50}'),
-            'nif' => fake()->regexify('[A-Za-z0-9]{9}'),
-            'direccion' => fake()->regexify('[A-Za-z0-9]{100}'),
-            'descripcion' => fake()->regexify('[A-Za-z0-9]{200}'),
-            'imagen' => fake()->regexify('[A-Za-z0-9]{50}'),
+            'nombre' => fake()->name('[A-Za-z]{20}'),
+            'cif' => fake()->regexify('^[G]{1}[0-9]{8}'),
+            'direccion' => fake()->address(),
+            'descripcion' => fake()->text(200),
+            'imagen' => fake()->url(),
             'user_id' => User::factory(),
         ];
     }
