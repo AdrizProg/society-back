@@ -23,7 +23,7 @@ class ComentarioFactory extends Factory
     public function definition(): array
     {
         return [
-            'text' => fake()->regexify('[A-Za-z0-9]{250}'),
+            'text' => fake()->text(250),
             'valoracion' => fake()->randomElement(["1","2","3","4","5","6","7","8","9","10"]),
             'producto_id' => Producto::factory(),
             'user_id' => User::factory(),
