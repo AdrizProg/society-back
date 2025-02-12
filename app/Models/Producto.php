@@ -47,22 +47,14 @@ class Producto extends Model
         return $this->hasMany(Imagen::class);
     }
 
-    // public function categoriaHasProductos(): HasMany
-    // {
-    //     return $this->hasMany(CategoriaHasProducto::class);
-    // }
     public function categorias(): BelongsToMany
     {
         return $this->belongsToMany(Categoria::class, 'categoria_has_productos');
     }
 
-    // public function productoHasPedidos(): HasMany
-    // {
-    //     return $this->hasMany(ProductoHasPedido::class);
-    // }
-    public function pedido(): BelongsToMany
+    public function pedidos(): BelongsToMany
     {
-        return $this->belongsToMany(Pedido::class, 'producto_has_pedido');
+        return $this->belongsToMany(Pedido::class, 'producto_has_pedidos'); // Nombre de la tabla intermedia corregido
     }
 
     public function comentarios(): HasMany

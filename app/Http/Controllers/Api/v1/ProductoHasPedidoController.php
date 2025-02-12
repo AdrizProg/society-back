@@ -4,17 +4,15 @@ namespace App\Http\Controllers\Api\v1;
 
 use Orion\Http\Controllers\Controller;
 use App\Models\ProductoHasPedido;
-use Illuminate\Http\Request;
 use Orion\Concerns\DisableAuthorization;
 use Orion\Concerns\DisablePagination;
 
 class ProductoHasPedidoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     use DisablePagination;
     use DisableAuthorization;
+
     protected $model = ProductoHasPedido::class;
-    protected $relation = ['pedido', 'productos'];
+
+    protected $relations = ['pedido', 'producto']; // Relación corregida
 }
