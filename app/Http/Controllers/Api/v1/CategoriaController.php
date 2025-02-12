@@ -14,5 +14,5 @@ class CategoriaController extends Controller
 
     protected $model = Categoria::class;
 
-    protected $relations = ['productos']; // Relación correcta
+    protected $relations = ['productos'];
 }
