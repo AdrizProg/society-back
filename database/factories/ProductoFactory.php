@@ -22,11 +22,11 @@ class ProductoFactory extends Factory
     public function definition(): array
     {
         return [
-            'nombre' => fake()->regexify('[A-Za-z0-9]{50}'),
-            'descripcion' => fake()->regexify('[A-Za-z0-9]{200}'),
-            'precio' => fake()->randomFloat(2, 0, 999999.99),
-            'stock' => fake()->numberBetween(-10000, 10000),
-            'isRopa' => fake()->word(),
+            'nombre' => fake()->name('[A-Za-z]{20}'),
+            'descripcion' => fake()->text(200),
+            'precio' => fake()->randomFloat(2, 0, 10000),
+            'stock' => fake()->numberBetween(0, 10000),
+            'isRopa' => fake()->boolean(),
             'asociacion_id' => Asociacion::factory(),
         ];
     }

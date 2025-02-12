@@ -21,8 +21,8 @@ class CategoriaFactory extends Factory
     public function definition(): array
     {
         return [
-            'nombre' => fake()->regexify('[A-Za-z0-9]{50}'),
-            'descripcion' => fake()->regexify('[A-Za-z0-9]{200}'),
+            'nombre' => fake()->name('[A-Za-z]{20}'),
+            'descripcion' => fake()->text(200),
         ];
     }
 }
