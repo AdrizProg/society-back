@@ -16,4 +16,5 @@ class ProductoController extends Controller
     use DisablePagination;
     use DisableAuthorization;
     protected $model = Producto::class;
+    protected $relations = ['pedido'];
 }
