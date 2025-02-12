@@ -31,7 +31,12 @@ Route::group(['as' => 'api.'], function () {
     // Orion::hasManyResource('user', 'asociaciones', UserAsociacionesController::class);
     // Orion::hasManyResource('producto', 'comentarios', ProductoComentariosController::class);
     // Tablas intermedia (N:M)
-    Orion::hasManyThroughResource('categorias', 'productos', CategoriaHasProductoController::class);
+
+    // Orion::hasManyThroughResource('categorias', 'productos', CategoriaHasProductoController::class);
+    // Posible arreglo 
+    Orion::belongsToManyResource('categorias', 'productos', CategoriaController::class);
+    Orion::belongsToManyResource('productos', 'categorias', ProductoController::class);
+
     Orion::hasManyThroughResource('productos', 'pedidos', ProductoHasPedidoController::class);
     Orion::hasManyThroughResource('ropas', 'productos', RopaHasProductoController::class);
     Orion::hasManyThroughResource('ropas', 'tipo_productos', RopaTipoProductoController::class);
