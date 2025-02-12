@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Producto extends Model
@@ -46,14 +47,22 @@ class Producto extends Model
         return $this->hasMany(Imagen::class);
     }
 
-    public function categoriaHasProductos(): HasMany
+    // public function categoriaHasProductos(): HasMany
+    // {
+    //     return $this->hasMany(CategoriaHasProducto::class);
+    // }
+    public function categorias(): BelongsToMany
     {
-        return $this->hasMany(CategoriaHasProducto::class);
+        return $this->belongsToMany(Categoria::class, 'categoria_has_productos');
     }
 
-    public function productoHasPedidos(): HasMany
+    // public function productoHasPedidos(): HasMany
+    // {
+    //     return $this->hasMany(ProductoHasPedido::class);
+    // }
+    public function pedido(): BelongsToMany
     {
-        return $this->hasMany(ProductoHasPedido::class);
+        return $this->belongsToMany(Pedido::class, 'producto_has_pedido');
     }
 
     public function comentarios(): HasMany
