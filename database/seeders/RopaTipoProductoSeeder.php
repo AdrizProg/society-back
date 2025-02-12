@@ -2,16 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Models\Asociacion;
+use App\Models\RopaTipoProducto;
 use Illuminate\Database\Seeder;
 
-class AsociacionSeeder extends Seeder
+class RopaTipoProductoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Asociacion::factory()->count(5)->create();
+        RopaTipoProducto::factory()->count(5)->create();
     }
 }

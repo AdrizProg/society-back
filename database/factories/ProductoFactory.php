@@ -5,16 +5,16 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\Asociacion;
-use App\Models\User;
+use App\Models\Producto;
 
-class AsociacionFactory extends Factory
+class ProductoFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Asociacion::class;
+    protected $model = Producto::class;
 
     /**
      * Define the model's default state.
@@ -23,11 +23,11 @@ class AsociacionFactory extends Factory
     {
         return [
             'nombre' => fake()->regexify('[A-Za-z0-9]{50}'),
-            'nif' => fake()->word(),
-            'direccion' => fake()->regexify('[A-Za-z0-9]{100}'),
             'descripcion' => fake()->regexify('[A-Za-z0-9]{200}'),
-            'imagen' => fake()->regexify('[A-Za-z0-9]{50}'),
-            'user_id' => User::factory(),
+            'precio' => fake()->randomFloat(2, 0, 999999.99),
+            'stock' => fake()->numberBetween(-10000, 10000),
+            'isRopa' => fake()->word(),
+            'asociacion_id' => Asociacion::factory(),
         ];
     }
 }

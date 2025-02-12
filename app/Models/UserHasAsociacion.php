@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Asociacion extends Model
+class UserHasAsociacion extends Model
 {
     use HasFactory;
 
@@ -17,11 +16,7 @@ class Asociacion extends Model
      * @var array
      */
     protected $fillable = [
-        'nombre',
-        'nif',
-        'direccion',
-        'descripcion',
-        'imagen',
+        'asociacion_id',
         'user_id',
     ];
 
@@ -32,6 +27,7 @@ class Asociacion extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'asociacion_id' => 'integer',
         'user_id' => 'integer',
     ];
 
@@ -40,13 +36,8 @@ class Asociacion extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function userHasAsociacions(): HasMany
+    public function asociacion(): BelongsTo
     {
-        return $this->hasMany(UserHasAsociacion::class);
-    }
-
-    public function productos(): HasMany
-    {
-        return $this->hasMany(Producto::class);
+        return $this->belongsTo(Asociacion::class);
     }
 }

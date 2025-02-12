@@ -4,17 +4,18 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\Asociacion;
+use App\Models\Comentario;
+use App\Models\Producto;
 use App\Models\User;
 
-class AsociacionFactory extends Factory
+class ComentarioFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Asociacion::class;
+    protected $model = Comentario::class;
 
     /**
      * Define the model's default state.
@@ -22,11 +23,9 @@ class AsociacionFactory extends Factory
     public function definition(): array
     {
         return [
-            'nombre' => fake()->regexify('[A-Za-z0-9]{50}'),
-            'nif' => fake()->word(),
-            'direccion' => fake()->regexify('[A-Za-z0-9]{100}'),
-            'descripcion' => fake()->regexify('[A-Za-z0-9]{200}'),
-            'imagen' => fake()->regexify('[A-Za-z0-9]{50}'),
+            'text' => fake()->regexify('[A-Za-z0-9]{250}'),
+            'valoracion' => fake()->randomElement(["1","2","3","4","5","6","7","8","9","10"]),
+            'producto_id' => Producto::factory(),
             'user_id' => User::factory(),
         ];
     }

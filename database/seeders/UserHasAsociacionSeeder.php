@@ -2,16 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Models\Asociacion;
+use App\Models\UserHasAsociacion;
 use Illuminate\Database\Seeder;
 
-class AsociacionSeeder extends Seeder
+class UserHasAsociacionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Asociacion::factory()->count(5)->create();
+        UserHasAsociacion::factory()->count(5)->create();
     }
 }
