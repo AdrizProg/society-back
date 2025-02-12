@@ -16,4 +16,7 @@ class CategoriaController extends Controller
     use DisablePagination;
     use DisableAuthorization;
     protected $model = Categoria::class;
+
+    protected $relations = ['producto'];
+
 }
