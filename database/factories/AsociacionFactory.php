@@ -23,7 +23,7 @@ class AsociacionFactory extends Factory
     {
         return [
             'nombre' => fake()->regexify('[A-Za-z0-9]{50}'),
-            'nif' => fake()->word(),
+            'nif' => fake()->regexify('[A-Za-z0-9]{9}'),
             'direccion' => fake()->regexify('[A-Za-z0-9]{100}'),
             'descripcion' => fake()->regexify('[A-Za-z0-9]{200}'),
             'imagen' => fake()->regexify('[A-Za-z0-9]{50}'),
