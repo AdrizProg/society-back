@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('descripcion', 255)->nullable();
             $table->char('cif', 9);
             $table->string('direccion', 255);
+            $table->enum('Tipo', ['Deportiva','Cultural','Vecinos','ConsumidoresYUsuarios','AyudaMutua','Voluntariado','Medioambientales','Educativas']);
             $table->string('imagen', 255)->nullable()->default("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg");
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
