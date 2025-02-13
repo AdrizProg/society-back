@@ -32,17 +32,10 @@ Route::group(['as' => 'api.'], function () {
     // Tablas relacionadas (1:N)
     // Orion::hasManyResource('user', 'asociaciones', UserAsociacionesController::class);
     // Orion::hasManyResource('producto', 'comentarios', ProductoComentariosController::class);
-    // Tablas relacionadas (N:M)
-    Orion::belongsToManyResource('categorias', 'productos', CategoriaController::class);
-    Orion::belongsToManyResource('productos', 'categorias', ProductoController::class);
-
-    Orion::belongsToManyResource('producto', 'pedidos', ProductoController::class);
-    Orion::belongsToManyResource('pedidos', 'productos', PedidoController::class);
-
-    Orion::belongsToManyResource('ropas', 'productos', RopaTipoProductoController::class);
-    Orion::belongsToManyResource('producto', 'ropas', ProductoController::class);
-
-    Orion::belongsToManyResource('user', 'asociaciones', UserController::class);
-    Orion::belongsToManyResource('asociaciones', 'user', AsociacionController::class);
+    // Tablas intermedia (N:M)
+    Orion::hasManyThroughResource('categorias', 'productos', CategoriaHasProductoController::class);
+    Orion::hasManyThroughResource('productos', 'pedidos', ProductoHasPedidoController::class);
+    Orion::hasManyThroughResource('ropas', 'productos', RopaHasProductoController::class);
+    Orion::hasManyThroughResource('users', 'asociaciones', UserHasAsociacionController::class);
 
 });
