@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Models\Categoria;
+use App\Models\Producto;
 use Orion\Http\Controllers\Controller;
 use App\Models\CategoriaHasProducto;
 use Illuminate\Http\Request;
@@ -10,7 +11,7 @@ use Orion\Concerns\DisableAuthorization;
 use Orion\Concerns\DisablePagination;
 use Orion\Http\Controllers\RelationController;
 
-class CategoriaHasProductoController extends RelationController
+class ProductoHasCategoriaController extends RelationController
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +19,7 @@ class CategoriaHasProductoController extends RelationController
 
     use DisablePagination;
     use DisableAuthorization;
-    protected $model = Categoria::class;
+    protected $model = Producto::class;
 
-    protected $relation = 'productos';
+    protected $relation = 'categorias';
 }

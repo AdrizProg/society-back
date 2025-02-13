@@ -13,6 +13,4 @@ class ProductoController extends Controller
     use DisableAuthorization;
 
     protected $model = Producto::class;
-
-    protected $relations = ['categorias'];
 }
