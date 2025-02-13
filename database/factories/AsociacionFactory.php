@@ -26,6 +26,7 @@ class AsociacionFactory extends Factory
             'cif' => fake()->regexify('^[G]{1}[0-9]{8}'),
             'direccion' => fake()->address(),
             'descripcion' => fake()->text(200),
+            'tipo' => fake()->randomElement(['Deportiva','Cultural','Vecinos','ConsumidoresYUsuarios','AyudaMutua','Voluntariado','Medioambientales','Educativas']),
             'imagen' => fake()->url(),
             'user_id' => User::factory(),
         ];

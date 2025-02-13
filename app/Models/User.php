@@ -51,9 +51,9 @@ class User extends Authenticatable
         ];
     }
 
-    public function asociacion(): HasMany
+    public function asociacion()
     {
-        return $this->hasMany(Asociacion::class);
+        return $this->belongsToMany(Asociacion::class,'User_Has_Asociacions');
     }
 
     public function asociacionUsers(): BelongsToMany
