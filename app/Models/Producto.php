@@ -62,7 +62,7 @@ class Producto extends Model
         return $this->hasMany(Comentario::class);
     }
 
-    public function asociacion(): BelongsTo
+    public function asociaciones()
     {
         return $this->belongsTo(Asociacion::class);
     }
