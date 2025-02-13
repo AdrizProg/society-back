@@ -37,9 +37,9 @@ class Producto extends Model
         'asociacion_id' => 'integer',
     ];
 
-    public function ropaHasProductos(): HasMany
+    public function ropas()
     {
-        return $this->hasMany(RopaHasProducto::class);
+        return $this->belongsToMany(RopaTipoProducto::class,'Ropa_Has_Productos');
     }
 
     public function imagens(): HasMany
@@ -47,14 +47,14 @@ class Producto extends Model
         return $this->hasMany(Imagen::class);
     }
 
-    public function categorias(): BelongsToMany
+    public function categorias()
     {
-        return $this->belongsToMany(Categoria::class, 'categoria_has_productos');
+        return $this->belongsToMany(Categoria::class, 'Categoria_Has_Productos');
     }
 
-    public function pedidos(): BelongsToMany
+    public function pedidos()
     {
-        return $this->belongsToMany(Pedido::class, 'producto_has_pedidos'); // Nombre de la tabla intermedia corregido
+        return $this->belongsToMany(Pedido::class, 'Producto_Has_Pedidos');
     }
 
     public function comentarios(): HasMany

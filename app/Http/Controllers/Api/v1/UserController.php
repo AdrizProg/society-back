@@ -12,6 +12,5 @@ class UserController extends Controller
      * Display a listing of the resource.
      */
     protected $model = User::class;
-    protected $relations = ['asociacion'];
 
 }

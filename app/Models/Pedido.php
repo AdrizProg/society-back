@@ -38,9 +38,9 @@ class Pedido extends Model
     // {
     //     return $this->hasMany(ProductoHasPedido::class);
     // }
-    public function producto(): BelongsToMany
+    public function producto()
     {
-        return $this->belongsToMany(Producto::class, 'producto_has_pedido');
+        return $this->belongsToMany(Producto::class, 'Producto_Has_Pedidos');
     }
 
     public function user(): BelongsTo

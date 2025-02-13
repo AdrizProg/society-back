@@ -18,6 +18,4 @@ class AsociacionController extends Controller
     use DisableAuthorization;
     protected $model = Asociacion::class;
 
-    protected $relations = ['user'];
-
 }
