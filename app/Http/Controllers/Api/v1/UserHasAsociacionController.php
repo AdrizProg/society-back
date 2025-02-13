@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Http\Controllers\Controller;
+use Orion\Http\Controllers\Controller;
 use App\Models\UserHasAsociacion;
 use Illuminate\Http\Request;
 use Orion\Concerns\DisableAuthorization;
@@ -16,4 +16,6 @@ class UserHasAsociacionController extends Controller
     use DisablePagination;
     use DisableAuthorization;
     protected $model = UserHasAsociacion::class;
+
+    protected $relation = ['asociacion', 'user'];
 }

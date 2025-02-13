@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Pedido extends Model
@@ -33,9 +34,13 @@ class Pedido extends Model
         'user_id' => 'integer',
     ];
 
-    public function productoHasPedidos(): HasMany
+    // public function productoHasPedidos(): HasMany
+    // {
+    //     return $this->hasMany(ProductoHasPedido::class);
+    // }
+    public function producto(): BelongsToMany
     {
-        return $this->hasMany(ProductoHasPedido::class);
+        return $this->belongsToMany(Producto::class, 'producto_has_pedido');
     }
 
     public function user(): BelongsTo

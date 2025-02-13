@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Http\Controllers\Controller;
+use Orion\Http\Controllers\Controller;
 use App\Models\CategoriaHasProducto;
 use Illuminate\Http\Request;
 use Orion\Concerns\DisableAuthorization;
@@ -17,4 +17,6 @@ class CategoriaHasProductoController extends Controller
     use DisablePagination;
     use DisableAuthorization;
     protected $model = CategoriaHasProducto::class;
+
+    protected $relations = ['productos', 'categorias'];
 }

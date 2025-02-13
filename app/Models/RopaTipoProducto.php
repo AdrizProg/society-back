@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class RopaTipoProducto extends Model
@@ -29,8 +30,12 @@ class RopaTipoProducto extends Model
         'id' => 'integer',
     ];
 
-    public function ropaHasProductos(): HasMany
+    // public function ropaHasProductos(): HasMany
+    // {
+    //     return $this->hasMany(RopaHasProducto::class);
+    // }
+    public function producto(): BelongsToMany
     {
-        return $this->hasMany(RopaHasProducto::class);
+        return $this->belongsToMany(Producto::class, 'ropa_has_producto');
     }
 }
