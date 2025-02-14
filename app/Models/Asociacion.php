@@ -51,7 +51,7 @@ class Asociacion extends Model
     }
     
 
-    public function producto()
+    public function productos(): HasMany
     {
         return $this->hasMany(Producto::class);
     }
