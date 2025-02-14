@@ -25,6 +25,10 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+Route::get('/csrf-token', function () {
+    return response()->json(['csrf_token' => csrf_token()]);
+});
+
 Route::group(['as' => 'api.'], function () {
     // Tablas Generales
     Orion::resource('asociaciones', AsociacionController::class);
