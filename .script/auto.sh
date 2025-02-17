@@ -6,9 +6,9 @@
 
     git pull origin master
 
-    npm i
+    composer install
 
-    composer intall
+    npm i
 
     php artisan optimize:clear
 
