@@ -28,7 +28,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route('http://localhost:5173/login');
+        return redirect()->intended(route('dashboard', absolute: false));
     }
 
     /**

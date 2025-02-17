@@ -8,8 +8,6 @@
 
     composer install
 
-    npm i
-
     php artisan optimize:clear
 
     sudo service php8.3-fm-reload
