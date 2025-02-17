@@ -6,6 +6,8 @@
 
     git pull origin master
 
+    composer install
+
     php artisan optimize:clear
 
     sudo service php8.3-fm-reload
