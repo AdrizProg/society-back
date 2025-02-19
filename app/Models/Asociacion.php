@@ -22,7 +22,7 @@ class Asociacion extends Model
         'nif',
         'direccion',
         'descripcion',
-        'imagen',
+        'imagenPrincipal',
         'user_id',
     ];
 

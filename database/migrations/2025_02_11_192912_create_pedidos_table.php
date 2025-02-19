@@ -15,9 +15,9 @@ return new class extends Migration
 
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
-            $table->enum('estado', ["enProceso","tramitado"]);
+            $table->enum('estado', ["carrito","enProceso","tramitado"]);
             $table->date('fechaEntregado')->nullable();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
 

@@ -8,9 +8,7 @@
 
     composer install
 
-    php artisan optimize:clear
-
-    sudo service php8.3-fm-reload
+    php artisan optimize
 
     npm run build
 
