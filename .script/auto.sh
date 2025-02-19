@@ -8,7 +8,7 @@
 
     composer install
 
-    php artisan optimize:clear
+    php artisan optimize
 
     sudo service php8.3-fm-reload
 
