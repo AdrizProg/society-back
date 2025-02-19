@@ -37,7 +37,7 @@ Route::get('/csrf-token', function () {
 
 Route::group(['as' => 'api.'], function () {
     // Tablas Generales
-    Orion::resource('asociaciones', AsociacionController::class)->middleware('auth:sanctum');
+    Orion::resource('asociaciones', AsociacionController::class);
     Orion::resource('users', UserController::class); // Revisar autenticacion, fallo.
     Orion::resource('categorias', CategoriaController::class);
     Orion::resource('productos', ProductoController::class);
