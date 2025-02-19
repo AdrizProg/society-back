@@ -20,6 +20,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Orion\Facades\Orion;
 use App\Http\Controllers\Api\v1\AsociacionController;
+use App\Http\Controllers\AuthController;
+
+Route::get('/csrf-token', [AuthController::class, 'getCsrfToken']);
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -31,7 +37,7 @@ Route::get('/csrf-token', function () {
 
 Route::group(['as' => 'api.'], function () {
     // Tablas Generales
-    Orion::resource('asociaciones', AsociacionController::class);
+    Orion::resource('asociaciones', AsociacionController::class)->middleware('auth:sanctum');
     Orion::resource('users', UserController::class); // Revisar autenticacion, fallo.
     Orion::resource('categorias', CategoriaController::class);
     Orion::resource('productos', ProductoController::class);
