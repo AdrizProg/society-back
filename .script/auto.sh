@@ -10,8 +10,6 @@
 
     php artisan optimize
 
-    sudo service php8.3-fm-reload
-
     npm run build
 
     echo "Deploy terminado"
