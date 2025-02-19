@@ -40,7 +40,7 @@ class Pedido extends Model
     // }
     public function producto()
     {
-        return $this->belongsToMany(Producto::class, 'Producto_Has_Pedidos');
+        return $this->belongsToMany(Producto::class, 'producto_has_pedidos');
     }
 
     public function user(): BelongsTo

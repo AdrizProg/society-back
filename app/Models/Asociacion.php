@@ -38,7 +38,7 @@ class Asociacion extends Model
 
     public function user()
     {
-        return $this->belongsToMany(User::class,'User_Has_Asociacions');
+        return $this->belongsToMany(User::class,'user_has_asociacions');
     }
 
     // public function userHasAsociacions(): HasMany
