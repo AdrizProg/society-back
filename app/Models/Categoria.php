@@ -36,6 +36,6 @@ class Categoria extends Model
     // }
     public function productos()
     {
-        return $this->belongsToMany(Producto::class, 'Categoria_Has_Productos');
+        return $this->belongsToMany(Producto::class, 'categoria_has_productos');
     }
 }
