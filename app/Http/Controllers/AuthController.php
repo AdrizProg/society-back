@@ -51,11 +51,11 @@ class AuthController extends Controller
     // Cerrar sesión
     public function logout(Request $request)
     {
-        Auth::logout();
+        Auth::guard('web')->logout();
         $request->session()->invalidate();  // Invalida la sesión
         $request->session()->regenerateToken();  // Regenera el token CSRF
         
         // Forzar la eliminación de la cookie de sesión
-        return response()->json(['message' => 'Logged out'])->withCookie(cookie()->forget(config('session.cookie')));
+        return response()->noContent();
     }
 }
