@@ -13,8 +13,22 @@ class PedidoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    use DisablePagination;
+    // use DisablePagination;
     use DisableAuthorization;
     protected $model = Pedido::class;
+
+    public function index(Request $request)
+    {
+        $query = Pedido::query();
+
+        if ($request->has('estado')) {
+            $query->where('estado', $request->input('estado'));
+        }
+
+        // Paginación
+        $pedido = $query->paginate(10); // Cambia el número según necesites
+
+        return response()->json($pedido);
+    }
 
 }
