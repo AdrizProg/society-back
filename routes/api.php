@@ -1,12 +1,15 @@
 <?php
 
 use App\Http\Controllers\Api\v1\AsociacionesProductoController;
+use App\Http\Controllers\Api\v1\AsociacionHasUserController;
 use App\Http\Controllers\Api\v1\CategoriaController;
 use App\Http\Controllers\Api\v1\CategoriaHasProductoController;
 use App\Http\Controllers\Api\v1\ComentarioController;
+use App\Http\Controllers\Api\v1\ComentariosProductoController;
 use App\Http\Controllers\Api\v1\ImagenController;
 use App\Http\Controllers\Api\v1\PedidoController;
 use App\Http\Controllers\Api\v1\PedidoHasProductoController;
+use App\Http\Controllers\Api\v1\ProductoComentariosController;
 use App\Http\Controllers\Api\v1\ProductoController;
 use App\Http\Controllers\Api\v1\ProductoHasCategoriaController;
 use App\Http\Controllers\Api\v1\ProductoHasPedidoController;
@@ -20,12 +23,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Orion\Facades\Orion;
 use App\Http\Controllers\Api\v1\AsociacionController;
-use App\Http\Controllers\AuthController;
-
-Route::get('/csrf-token', [AuthController::class, 'getCsrfToken']);
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -35,7 +32,11 @@ Route::get('/csrf-token', function () {
     return response()->json(['csrf_token' => csrf_token()]);
 });
 
+// Subir Imagenes
+Route::post('/imagenes', [ImagenController::class, 'store']);
+
 Route::group(['as' => 'api.'], function () {
+
     // Tablas Generales
     Orion::resource('asociaciones', AsociacionController::class);
     Orion::resource('users', UserController::class); // Revisar autenticacion, fallo.
@@ -44,10 +45,11 @@ Route::group(['as' => 'api.'], function () {
     Orion::resource('comentarios', ComentarioController::class);
     Orion::resource('imagenes', ImagenController::class);
     Orion::resource('pedidos', PedidoController::class);
-    // Tablas relacionadas (1:N)
-    // Orion::hasManyResource('user', 'asociaciones', UserAsociacionesController::class);
-    // Orion::hasManyResource('producto', 'comentarios', ProductoComentariosController::class);
-    // Tablas intermedia (N:M)
+    // Tablas relacionadas
+
+    // Relaciones productos con comentarios y comentarios con productos
+    Orion::hasManyResource('productos', 'comentarios', ProductoComentariosController::class);
+    Orion::hasManyResource('comentarios', 'productos', ComentariosProductoController::class);
 
     // Relaciones asociacion con productos y producto con asociaciones
     Orion::hasManyResource('asociaciones', 'productos', AsociacionesProductoController::class);
@@ -67,5 +69,5 @@ Route::group(['as' => 'api.'], function () {
 
     // Relacion Usuarios con asociaciones y asociaciones con usuarios
     Orion::hasManyThroughResource('users', 'asociaciones', UserHasAsociacionController::class);
-    // Falta relacion inversa, revisar fallo
+    Orion::hasManyThroughResource('asociaciones', 'users', AsociacionHasUserController::class);
 });

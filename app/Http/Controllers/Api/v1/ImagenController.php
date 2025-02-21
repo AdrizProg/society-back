@@ -16,4 +16,28 @@ class ImagenController extends Controller
     use DisablePagination;
     use DisableAuthorization;
     protected $model = Imagen::class;
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'url' => 'nullable|file|image|max:7168',
+            'producto_id' => 'required|exists:productos,id'
+        ]);
+
+        if ($request->hasFile('imagen')) {
+            $path = $request->file('imagen')->store('image-producto', 'public');
+
+            $imagen = Imagen::create([
+                'url' => $path,
+                'producto_id' => $request->producto_id
+            ]);
+
+            return response()->json([
+                'message' => 'éxito',
+                'url' => asset('storage/' . $path),
+                'imagen' => $imagen
+            ], 201);
+        }
+
+    }
 }
