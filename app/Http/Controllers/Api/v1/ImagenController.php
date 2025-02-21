@@ -20,7 +20,7 @@ class ImagenController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'url' => 'nullable|file|image|max:1048',
+            'url' => 'nullable|file|image|max:7168',
             'producto_id' => 'required|exists:productos,id'
         ]);
 
