@@ -23,12 +23,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Orion\Facades\Orion;
 use App\Http\Controllers\Api\v1\AsociacionController;
-use App\Http\Controllers\AuthController;
-
-Route::get('/csrf-token', [AuthController::class, 'getCsrfToken']);
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::get('/user', function (Request $request) {
     return $request->user();
