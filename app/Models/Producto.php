@@ -39,7 +39,7 @@ class Producto extends Model
 
     public function ropas()
     {
-        return $this->belongsToMany(RopaTipoProducto::class,'Ropa_Has_Productos');
+        return $this->belongsToMany(RopaTipoProducto::class,'ropa_has_productos');
     }
 
     public function imagens(): HasMany
@@ -49,12 +49,12 @@ class Producto extends Model
 
     public function categorias()
     {
-        return $this->belongsToMany(Categoria::class, 'Categoria_Has_Productos');
+        return $this->belongsToMany(Categoria::class, 'categoria_has_productos');
     }
 
     public function pedidos()
     {
-        return $this->belongsToMany(Pedido::class, 'Producto_Has_Pedidos');
+        return $this->belongsToMany(Pedido::class, 'producto_has_pedidos');
     }
 
     public function comentarios(): HasMany
@@ -62,7 +62,7 @@ class Producto extends Model
         return $this->hasMany(Comentario::class);
     }
 
-    public function asociacion(): BelongsTo
+    public function asociaciones()
     {
         return $this->belongsTo(Asociacion::class);
     }

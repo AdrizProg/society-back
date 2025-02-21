@@ -13,7 +13,21 @@ class ComentarioController extends Controller
     /**
      * Display a listing of the resource.
      */
-    use DisablePagination;
+    // use DisablePagination;
     use DisableAuthorization;
     protected $model = Comentario::class;
+
+    public function index(Request $request)
+    {
+        $query = Comentario::query();
+
+        if ($request->has('valoracion')) {
+            $query->where('valoracion', $request->input('valoracion'));
+        }
+
+        // Paginación
+        $coment = $query->paginate(10); // Cambia el número según necesites
+
+        return response()->json($coment);
+    }
 }
