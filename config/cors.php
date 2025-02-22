@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['FRONTEND_URL','http://localhost:5173'],
+    'allowed_origins' => ['FRONTEND_URL','https://society-front.vercel.app'],
 
     'allowed_origins_patterns' => [],
 
