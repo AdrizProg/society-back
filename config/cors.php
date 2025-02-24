@@ -15,17 +15,17 @@ return [
     |
     */
 
-    'paths' => ['api/*','sanctum/csrf-cookie','login','logout'],
+    'paths' => ['api/*', 'sanctum/csrf-cookie', 'login', 'logout'],
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['FRONTEND_URL','http://localhost:5173'],
+    'allowed_origins' => ['*'],
 
-    'allowed_origins_patterns' => [],
+    'allowed_origins_patterns' => ["*"],
 
     'allowed_headers' => ['*'],
 
-    'exposed_headers' => [],
+    'exposed_headers' => ["*"],
 
     'max_age' => 0,
 

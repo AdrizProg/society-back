@@ -14,13 +14,13 @@ class AsociacionController extends Controller
      * Display a listing of the resource.
      */
     // Orion
-    // use DisablePagination;
+    use DisablePagination;
     use DisableAuthorization;
     protected $model = Asociacion::class;
 
     public function index(Request $request)
     {
-        $query = Asociacion::query();
+        $query = Asociacion::where('aprovado', true);
 
         if ($request->has('tipo')) {
             $query->where('tipo', $request->input('tipo'));
@@ -37,4 +37,19 @@ class AsociacionController extends Controller
 
         return response()->json($asoci);
     }
+
+    public function pendientes()
+    {
+        return Asociacion::where('aprovado', false)->get();
+    }
+
+    public function aprovados($id)
+    {
+        $asociacion = Asociacion::find($id);
+        $asociacion->update(['aprovado' => true]);
+        return response()->json(['message' => 'Asociacion aprovada', 'data' => $asociacion]);
+    }
+
+
+
 }

@@ -19,6 +19,7 @@ use App\Http\Controllers\Api\v1\RopaHasProductoController;
 use App\Http\Controllers\Api\v1\RopaTipoProductoController;
 use App\Http\Controllers\Api\v1\UserController;
 use App\Http\Controllers\Api\v1\UserHasAsociacionController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Orion\Facades\Orion;
@@ -27,6 +28,8 @@ use App\Http\Controllers\Api\v1\AsociacionController;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
+
+Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 
 Route::get('/csrf-token', function () {
     return response()->json(['csrf_token' => csrf_token()]);
@@ -71,3 +74,8 @@ Route::group(['as' => 'api.'], function () {
     Orion::hasManyThroughResource('users', 'asociaciones', UserHasAsociacionController::class);
     Orion::hasManyThroughResource('asociaciones', 'users', AsociacionHasUserController::class);
 });
+
+// Optener las asociaciones que estan pendientes para el panel de user
+Route::get('/asociaciones/pendientes', [AsociacionController::class, 'pendientes']);
+// Actualizar la asociacion para que se apruebe o se rechace
+Route::put('/asociaciones/{id}/aprovados', [AsociacionController::class, 'aprovados']);
