@@ -25,7 +25,7 @@ return [
 
     'allowed_headers' => ['*'],
 
-    'exposed_headers' => ['XSRF_TOKEN'],
+    'exposed_headers' => ['XSRF_TOKEN','Set-Cookie'],
 
     'max_age' => 0,
 
