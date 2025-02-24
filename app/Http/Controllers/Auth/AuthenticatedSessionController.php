@@ -19,7 +19,9 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return response()->noContent();
+        return response()->json([
+            'csrf_token' => csrf_token(),
+        ]);
     }
 
     /**
