@@ -19,7 +19,7 @@ return [
     */
 
     'driver' => env('SESSION_DRIVER', 'cookie'),
-    'domain' => env('SESSION_DOMAIN', null), // Ajusta esto si es necesario
+    // 'domain' => env('SESSION_DOMAIN', null), // Ajusta esto si es necesario
 
 
     /*
