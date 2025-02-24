@@ -19,13 +19,13 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://society-front.vercel.app'],
+    'allowed_origins' => ['https://society-front.vercel.app','https://login-prueba-opal.vercel.app/'],
 
     'allowed_origins_patterns' => [],
 
     'allowed_headers' => ['*'],
 
-    'exposed_headers' => ['XSRF_TOKEN','Set-Cookie'],
+    'exposed_headers' => ['X-CSRF-TOKEN','Set-Cookie',],
 
     'max_age' => 0,
 
