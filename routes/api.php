@@ -16,7 +16,7 @@ use App\Http\Controllers\Api\v1\ProductoHasPedidoController;
 use App\Http\Controllers\Api\v1\ProductoHasRopaController;
 use App\Http\Controllers\Api\v1\ProductosAsociacionesController;
 use App\Http\Controllers\Api\v1\RopaHasProductoController;
-use App\Http\Controllers\Api\v1\RopaTipoProductoController;
+// use App\Http\Controllers\Api\v1\RopaTipoProductoController;
 use App\Http\Controllers\Api\v1\UserController;
 use App\Http\Controllers\Api\v1\UserHasAsociacionController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;

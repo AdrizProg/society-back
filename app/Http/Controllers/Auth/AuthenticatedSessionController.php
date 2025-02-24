@@ -19,14 +19,16 @@ class AuthenticatedSessionController extends Controller
 
         $request->authenticate();
         $request->session()->regenerate();
-        $tokenResult = $request->user()->createToken('authToken');
-        $token = $tokenResult->plainTextToken;
+        $user = Auth::user();
+        // $tokenResult = $request->user()->createToken('authToken');
+        $token = $user->createToken('auth_token')->plainTextToken;
 
-        return response()->json([
-            'message' => 'Login exitoso',
-            'token' => $token,
-            'user' => Auth::user(),
-        ]);
+        return response()->json([$token]);
+        // return response()->json([
+        //     'message' => 'Login exitoso',
+        //     'token' => $token,
+        //     'user' => Auth::user(),
+        // ]);
     }
 
     /**

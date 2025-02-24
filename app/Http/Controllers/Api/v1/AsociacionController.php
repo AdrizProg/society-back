@@ -40,12 +40,12 @@ class AsociacionController extends Controller
 
     public function pendientes()
     {
-        return Asociacion::where('aprovado', false)->get();
+        return response()->json(Asociacion::where('aprovado', false)->get());
     }
 
     public function aprovados($id)
     {
-        $asociacion = Asociacion::find($id);
+        $asociacion = Asociacion::findOrFail($id);
         $asociacion->update(['aprovado' => true]);
         return response()->json(['message' => 'Asociacion aprovada', 'data' => $asociacion]);
     }
