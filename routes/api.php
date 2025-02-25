@@ -35,9 +35,9 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/imagenes', [ImagenController::class, 'store']);
 
 // Optener las asociaciones que estan pendientes para el panel de user
-Route::get('/asociaciones/pendientes', [AsociacionController::class, 'pendientes']);
+Route::middleware('auth:sanctum')->get('/asociaciones/pendientes', [AsociacionController::class, 'pendientes']);
 // Actualizar la asociacion para que se apruebe o se rechace
-Route::put('/asociaciones/{id}/aprobados', [AsociacionController::class, 'aprobados']);
+Route::middleware('auth:sanctum')->put('/asociaciones/{id}/aprobados', [AsociacionController::class, 'aprobados']);
 
 Route::group(['as' => 'api.'], function () {
 
