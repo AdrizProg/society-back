@@ -15,9 +15,9 @@ return [
     |
     */
 
-    'paths' => ['api/*','login'], // Solo permitir rutas de la API
+    'paths' => ['api/*'], // Solo permitir rutas de la API
     'allowed_methods' => ['*'],
-    'allowed_origins' => ['society-front.vercel.app'], // Permitir solo el frontend
+    'allowed_origins' => ['https://society-front.vercel.app'], // Permitir solo el frontend
     'allowed_origins_patterns' => [],
     'allowed_headers' => ['*'],
     'exposed_headers' => ['Authorization'], // Permitir acceso al header del token
