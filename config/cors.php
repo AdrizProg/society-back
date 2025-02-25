@@ -15,13 +15,15 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'logout'], // Rutas a las que se aplicará CORS
-    'allowed_methods' => ['*'], // Métodos permitidos (GET, POST, etc.)
-    'allowed_origins' => ['https://society-front.vercel.app'], // Origen permitido
-    'allowed_origins_patterns' => [],
-    'allowed_headers' => ['*'], // Encabezados permitidos
-    'exposed_headers' => [],
-    'max_age' => 0,
-    'supports_credentials' => true
+        'paths' => ['api/*'], // Solo permitir rutas de la API
+        'allowed_methods' => ['*'],
+        'allowed_origins' => ['https://society-front.vercel.app'], // Permitir solo el frontend
+        'allowed_origins_patterns' => [],
+        'allowed_headers' => [
+            'Content-Type', 'X-Requested-With', 'Authorization', 'Accept', 'Origin'
+        ],
+        'exposed_headers' => ['Authorization'], // Permitir acceso al header del token
+        'max_age' => 0,
+        'supports_credentials' => false, // IMPORTANTE: debe ser false si usas solo tokens    
 
 ];
