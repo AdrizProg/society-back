@@ -20,7 +20,7 @@ class AsociacionController extends Controller
 
     public function index(Request $request)
     {
-        $query = Asociacion::where('aprovado', true);
+        $query = Asociacion::where('aprobados', 1);
 
         if ($request->has('tipo')) {
             $query->where('tipo', $request->input('tipo'));
@@ -40,13 +40,14 @@ class AsociacionController extends Controller
 
     public function pendientes()
     {
-        return response()->json(Asociacion::where('aprovado', false)->get());
+        return response()->json(Asociacion::where('aprobados', 0)->get());
     }
 
-    public function aprovados($id)
+    public function aprobados($id)
     {
         $asociacion = Asociacion::findOrFail($id);
-        $asociacion->update(['aprovado' => true]);
+        $asociacion->update(['aprobados' => 1]);
+        $asociacion->refresh();
         return response()->json(['message' => 'Asociacion aprovada', 'data' => $asociacion]);
     }
 

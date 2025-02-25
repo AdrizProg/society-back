@@ -38,6 +38,11 @@ Route::get('/csrf-token', function () {
 // Subir Imagenes
 Route::post('/imagenes', [ImagenController::class, 'store']);
 
+// Optener las asociaciones que estan pendientes para el panel de user
+Route::get('/asociaciones/pendientes', [AsociacionController::class, 'pendientes']);
+// Actualizar la asociacion para que se apruebe o se rechace
+Route::put('/asociaciones/{id}/aprobados', [AsociacionController::class, 'aprobados']);
+
 Route::group(['as' => 'api.'], function () {
 
     // Tablas Generales
@@ -74,8 +79,3 @@ Route::group(['as' => 'api.'], function () {
     Orion::hasManyThroughResource('users', 'asociaciones', UserHasAsociacionController::class);
     Orion::hasManyThroughResource('asociaciones', 'users', AsociacionHasUserController::class);
 });
-
-// Optener las asociaciones que estan pendientes para el panel de user
-Route::get('/asociaciones/pendientes', [AsociacionController::class, 'pendientes']);
-// Actualizar la asociacion para que se apruebe o se rechace
-Route::put('/asociaciones/{id}/aprovados', [AsociacionController::class, 'aprovados']);

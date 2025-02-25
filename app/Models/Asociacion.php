@@ -24,7 +24,7 @@ class Asociacion extends Model
         'direccion',
         'descripcion',
         'imagenPrincipal',
-        'is_approved',
+        'aprobados',
         'user_id',
 
     ];
@@ -36,7 +36,7 @@ class Asociacion extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'is_approved' => 'boolean',
+        'aprobados' => 'boolean',
         'user_id' => 'integer',
     ];
 
