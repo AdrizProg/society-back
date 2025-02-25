@@ -15,20 +15,13 @@ return [
     |
     */
 
-    'paths' => ['api/*','sanctum/csrf-cookie','login','logout'],
-
-    'allowed_methods' => ['*'],
-
-    'allowed_origins' => ['https://society-front.vercel.app','https://login-prueba-opal.vercel.app'],
-
+    'paths' => ['api/*', 'login', 'logout'], // Rutas a las que se aplicará CORS
+    'allowed_methods' => ['*'], // Métodos permitidos (GET, POST, etc.)
+    'allowed_origins' => ['https://society-front.vercel.app'], // Origen permitido
     'allowed_origins_patterns' => [],
-
-    'allowed_headers' => ['*'],
-
-    'exposed_headers' => ['X-CSRF-TOKEN','Set-Cookie',],
-
+    'allowed_headers' => ['*'], // Encabezados permitidos
+    'exposed_headers' => [],
     'max_age' => 0,
-
-    'supports_credentials' => true,
+    'supports_credentials' => true
 
 ];

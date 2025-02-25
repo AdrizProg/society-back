@@ -19,6 +19,7 @@ use App\Http\Controllers\Api\v1\RopaHasProductoController;
 use App\Http\Controllers\Api\v1\RopaTipoProductoController;
 use App\Http\Controllers\Api\v1\UserController;
 use App\Http\Controllers\Api\v1\UserHasAsociacionController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Orion\Facades\Orion;
@@ -27,6 +28,8 @@ use App\Http\Controllers\Api\v1\AsociacionController;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
+
+Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/csrf-token', function () {
     return response()->json(['csrf_token' => csrf_token()]);
