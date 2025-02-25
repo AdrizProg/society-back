@@ -24,11 +24,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'nickName',
         'email',
         'telf',
         'direccion',
         'password',
+        'admin',
     ];
 
     /**
@@ -51,12 +51,22 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'admin' => 'boolean',
         ];
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($user) {
+            $user->password = bcrypt('password');
+        });
     }
 
     public function asociacion()
     {
-        return $this->belongsToMany(Asociacion::class,'user_has_asociacions');
+        return $this->belongsToMany(Asociacion::class, 'user_has_asociacions');
     }
 
 }

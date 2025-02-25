@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
-    // use DisablePagination;
+    use DisablePagination;
     use DisableAuthorization;
 
     protected $model = Producto::class;

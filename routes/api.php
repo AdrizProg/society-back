@@ -16,7 +16,7 @@ use App\Http\Controllers\Api\v1\ProductoHasPedidoController;
 use App\Http\Controllers\Api\v1\ProductoHasRopaController;
 use App\Http\Controllers\Api\v1\ProductosAsociacionesController;
 use App\Http\Controllers\Api\v1\RopaHasProductoController;
-use App\Http\Controllers\Api\v1\RopaTipoProductoController;
+// use App\Http\Controllers\Api\v1\RopaTipoProductoController;
 use App\Http\Controllers\Api\v1\UserController;
 use App\Http\Controllers\Api\v1\UserHasAsociacionController;
 use App\Http\Controllers\AuthController;
@@ -33,6 +33,11 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 // Subir Imagenes
 Route::post('/imagenes', [ImagenController::class, 'store']);
+
+// Optener las asociaciones que estan pendientes para el panel de user
+Route::get('/asociaciones/pendientes', [AsociacionController::class, 'pendientes']);
+// Actualizar la asociacion para que se apruebe o se rechace
+Route::put('/asociaciones/{id}/aprobados', [AsociacionController::class, 'aprobados']);
 
 Route::group(['as' => 'api.'], function () {
 
