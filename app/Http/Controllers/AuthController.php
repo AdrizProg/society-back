@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
+
     public function login(Request $request)
     {
+        Log::info('Datos recibidos en el login:', $request->all());
+
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -27,4 +30,5 @@ class AuthController extends Controller
             'token' => $token,
         ]);
     }
+
 }
