@@ -36,6 +36,6 @@ class RopaTipoProducto extends Model
     // }
     public function productos()
     {
-        return $this->belongsToMany(Producto::class, 'Ropa_Has_Productos');
+        return $this->belongsToMany(Producto::class, 'ropa_has_productos');
     }
 }

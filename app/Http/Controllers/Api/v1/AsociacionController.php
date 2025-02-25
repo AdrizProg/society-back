@@ -18,4 +18,39 @@ class AsociacionController extends Controller
     use DisableAuthorization;
     protected $model = Asociacion::class;
 
+    public function index(Request $request)
+    {
+        $query = Asociacion::where('aprobados', 1);
+
+        if ($request->has('tipo')) {
+            $query->where('tipo', $request->input('tipo'));
+        }
+
+        if ($request->has('search')) {
+            $query->where('nombre', 'LIKE', '%' . $request->input('search') . '%')
+                ->orderBy('nombre', 'ASC');
+
+        }
+
+        // Paginación
+        $asoci = $query->paginate(10); // Cambia el número según necesites
+
+        return response()->json($asoci);
+    }
+
+    public function pendientes()
+    {
+        return response()->json(Asociacion::where('aprobados', 0)->get());
+    }
+
+    public function aprobados($id)
+    {
+        $asociacion = Asociacion::findOrFail($id);
+        $asociacion->update(['aprobados' => 1]);
+        $asociacion->refresh();
+        return response()->json(['message' => 'Asociacion aprovada', 'data' => $asociacion]);
+    }
+
+
+
 }

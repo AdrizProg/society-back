@@ -17,13 +17,16 @@ class Asociacion extends Model
      *
      * @var array
      */
+
     protected $fillable = [
         'nombre',
         'nif',
         'direccion',
         'descripcion',
-        'imagen',
+        'imagenPrincipal',
+        'aprobados',
         'user_id',
+
     ];
 
     /**
@@ -33,25 +36,22 @@ class Asociacion extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'aprobados' => 'boolean',
         'user_id' => 'integer',
     ];
 
     public function user()
     {
-        return $this->belongsToMany(User::class,'User_Has_Asociacions');
+        return $this->belongsToMany(User::class, 'user_has_asociacions');
     }
 
-    // public function userHasAsociacions(): HasMany
-    // {
-    //     return $this->hasMany(UserHasAsociacion::class);
-    // }
     public function usersAsociados(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'user_has_asociacion');
     }
-    
 
-    public function productos(): HasMany
+
+    public function producto()
     {
         return $this->hasMany(Producto::class);
     }

@@ -15,9 +15,9 @@ return new class extends Migration
 
         Schema::create('ropa_has_productos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('producto_id')->constrained();
+            $table->foreignId('producto_id')->constrained()->onDelete('cascade');
             $table->integer('cantidad');
-            $table->foreignId('ropa_tipo_producto_id');
+            $table->foreignId('ropa_tipo_producto_id')->onDelete('cascade');
             $table->timestamps();
         });
 

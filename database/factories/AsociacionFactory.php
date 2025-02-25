@@ -27,7 +27,6 @@ class AsociacionFactory extends Factory
             'direccion' => fake()->address(),
             'descripcion' => fake()->text(200),
             'tipo' => fake()->randomElement(['Deportiva','Cultural','Vecinos','Consumidores y Usuarios','Ayuda Mutua','Voluntariado','Medioambientales','Educativas']),
-            'imagen' => fake()->url(),
             'user_id' => User::factory(),
         ];
     }

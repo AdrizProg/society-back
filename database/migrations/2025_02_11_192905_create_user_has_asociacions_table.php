@@ -15,8 +15,8 @@ return new class extends Migration
 
         Schema::create('user_has_asociacions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('asociacion_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('asociacion_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
 

@@ -27,11 +27,13 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
+            'telf' => fake()->regexify('^[6]{1}[0-9]{8}'),
+            'direccion' => fake()->address(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
         ];
     }
-
+    
     /**
      * Indicate that the model's email address should be unverified.
      */
