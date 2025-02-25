@@ -27,4 +27,24 @@ class AuthController extends Controller
             'token' => $token,
         ]);
     }
+
+    public function logout(Request $request)
+{
+    $user = Auth::user();
+
+    // Eliminar todos los tokens del usuario
+    $user->tokens()->delete();
+
+    // Cerrar la sesión del usuario
+    Auth::guard('web')->logout();
+
+    // Invalidar la sesión actual
+    $request->session()->invalidate();
+
+    // Regenerar el token de sesión
+    $request->session()->regenerateToken();
+
+    // Devolver una respuesta JSON indicando que el logout fue exitoso
+    return response()->json(['message' => 'Logged out successfully']);
+}
 }
