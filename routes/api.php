@@ -29,7 +29,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
 
 // Subir Imagenes
 Route::post('/imagenes', [ImagenController::class, 'store']);
