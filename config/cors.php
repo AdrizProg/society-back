@@ -17,17 +17,11 @@ return [
 
     'paths' => ['api/*'], // Solo permitir rutas de la API
     'allowed_methods' => ['*'],
-    'allowed_origins' => ['http://localhost:5173'], // Permitir solo el frontend
+    'allowed_origins' => ['https://society-front.vercel.app'], // Permitir solo el frontend
     'allowed_origins_patterns' => [],
-    'allowed_headers' => [
-        'Content-Type',
-        'X-Requested-With',
-        'Authorization',
-        'Accept',
-        'Origin'
-    ],
+    'allowed_headers' => ['*'],
     'exposed_headers' => ['Authorization'], // Permitir acceso al header del token
     'max_age' => 0,
-    'supports_credentials' => false, // IMPORTANTE: debe ser false si usas solo tokens    
+    'supports_credentials' => true, // IMPORTANTE: debe ser false si usas solo tokens    
 
 ];
