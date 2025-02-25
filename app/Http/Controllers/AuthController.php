@@ -27,7 +27,7 @@ class AuthController extends Controller
             ]);
         }
 
-        // Si la autenticación falla
+        // Si la autenticación falla, devolver un error JSON
         return response()->json(['error' => 'Credenciales inválidas'], 401);
     }
 }
