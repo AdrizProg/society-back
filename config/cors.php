@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'login', 'logout'], // Rutas a las que se aplicará CORS
+    'paths' => ['api/*', 'logout'], // Rutas a las que se aplicará CORS
     'allowed_methods' => ['*'], // Métodos permitidos (GET, POST, etc.)
     'allowed_origins' => ['https://society-front.vercel.app'], // Origen permitido
     'allowed_origins_patterns' => [],
