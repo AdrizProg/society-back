@@ -15,13 +15,13 @@ return [
     |
     */
 
-'paths' => ['api/*', 'login'], // Rutas a las que se aplicará CORS
+    'paths' => ['api/*', 'login', 'logout'], // Rutas a las que se aplicará CORS
     'allowed_methods' => ['*'], // Métodos permitidos (GET, POST, etc.)
-    'allowed_origins' => ['http://localhost:5173'], // Orígenes permitidos
+    'allowed_origins' => ['https://society-front.vercel.app'], // Origen permitido
     'allowed_origins_patterns' => [],
     'allowed_headers' => ['*'], // Encabezados permitidos
     'exposed_headers' => [],
     'max_age' => 0,
-    'supports_credentials' => false, // No es necesario para APIs basadas en tokens
+    'supports_credentials' => true
 
 ];
