@@ -20,12 +20,12 @@ class ImagenController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'url' => 'nullable|file|image|max:1048',
+            'url' => 'nullable|file|image',
             'producto_id' => 'required|exists:productos,id'
         ]);
 
-        if ($request->hasFile('imagen')) {
-            $path = $request->file('imagen')->store('image-producto', 'public');
+        if ($request->hasFile('url')) {
+            $path = $request->file('url')->store('image-producto', 'public');
 
             $imagen = Imagen::create([
                 'url' => $path,
@@ -37,6 +37,8 @@ class ImagenController extends Controller
                 'url' => asset('storage/' . $path),
                 'imagen' => $imagen
             ], 201);
+
+            // return response()->json(['error' => 'No se ha subido ninguna imagen'], 400);
         }
 
     }
