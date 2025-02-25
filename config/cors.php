@@ -15,9 +15,9 @@ return [
     |
     */
 
-    'paths' => ['api/*'], // Solo permitir rutas de la API
+    'paths' => ['api/*','login'], // Solo permitir rutas de la API
     'allowed_methods' => ['*'],
-    'allowed_origins' => ['http://localhost:5173'], // Permitir solo el frontend
+    'allowed_origins' => ['society-front.vercel.app'], // Permitir solo el frontend
     'allowed_origins_patterns' => [],
     'allowed_headers' => [
         'Content-Type',
