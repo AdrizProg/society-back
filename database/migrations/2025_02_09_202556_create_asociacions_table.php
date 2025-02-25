@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->string('direccion', 255)->nullable();
             $table->enum('tipo', ['Deportiva', 'Cultural', 'Vecinos', 'Consumidores y Usuarios', 'Ayuda Mutua', 'Voluntariado', 'Medioambientales', 'Educativas']);
             $table->string('imagenPrincipal', 255)->nullable()->default("https://www.hemomadrid.com/wp-content/uploads/2015/09/imagen-vacia.jpg");
-            $table->boolean('aprovado')->default(false);
+            $table->boolean('aprobados')->default(false);
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
