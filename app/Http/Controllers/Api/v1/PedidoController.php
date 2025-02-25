@@ -13,7 +13,7 @@ class PedidoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    // use DisablePagination;
+    use DisablePagination;
     use DisableAuthorization;
     protected $model = Pedido::class;
 

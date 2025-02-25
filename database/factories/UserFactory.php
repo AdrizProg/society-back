@@ -25,7 +25,6 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'nickName' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'telf' => fake()->regexify('^[6]{1}[0-9]{8}'),
