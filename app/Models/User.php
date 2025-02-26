@@ -69,4 +69,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Asociacion::class, 'user_has_asociacions');
     }
 
+    public function pedido()
+    {
+        return $this->hasMany(Pedido::class);
+    }
+
 }
