@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class ProductoController extends Controller
 {
     // use DisablePagination;
-    // use DisableAuthorization;
+    use DisableAuthorization;
 
     protected $model = Producto::class;
 

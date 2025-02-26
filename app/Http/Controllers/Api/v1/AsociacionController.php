@@ -17,7 +17,7 @@ class AsociacionController extends Controller
      */
     // Orion
     use DisablePagination;
-    use DisableAuthorization;
+    // use DisableAuthorization;
     protected $model = Asociacion::class;
 
     public function index(Request $request)
