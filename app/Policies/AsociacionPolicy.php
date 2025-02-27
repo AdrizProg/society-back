@@ -36,7 +36,7 @@ class AsociacionPolicy
      */
     public function update(User $user, Asociacion $asociacion): bool
     {
-        return false;
+        return true;
     }
 
     /**
