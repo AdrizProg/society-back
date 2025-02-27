@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Pedido;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class PedidoSeeder extends Seeder
