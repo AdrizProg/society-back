@@ -22,7 +22,7 @@ class PedidoFactory extends Factory
     public function definition(): array
     {
         return [
-            'estado' => fake()->randomElement(["carrito","enProceso","tramitado"]),
+            'estado' => fake()->randomElement(["carrito"]),
             'fechaEntregado' => fake()->date(),
             'user_id' => User::factory(),
         ];

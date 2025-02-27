@@ -12,6 +12,11 @@ class PedidoSeeder extends Seeder
      */
     public function run(): void
     {
-        Pedido::factory()->count(5)->create();
+        User::factory()->count(10)->create()->each(function ($user) {
+            // Crear 10 pedidos para cada usuario
+            Pedido::factory()->count(10)->create([
+                'user_id' => $user->id,
+            ]);
+        });
     }
 }
