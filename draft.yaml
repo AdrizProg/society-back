@@ -1,0 +1,82 @@
+models:
+    Asociacion:
+        nombre: string:50
+        nif: strinh:9
+        direccion: string:100
+        descripcion: string:200 nullable
+        imagen: string:50 nullable
+        user_id: id foreign:user
+        relationships:
+            belongsTo: User
+            hasMany: UserHasAsociacion, Producto
+
+    UserHasAsociacion:
+        asociacion_id: id foreign:asociacion
+        user_id: id foreign:user
+        relationships:
+            belongsTo: User, Asociacion
+
+    RopaTipoProducto:
+        tallas: enum:xxs,xs,s,m,l,xl,xxl,xxxl
+        color: enum:blanco,negro,azul,morado,rojo,amarillo,naranja,gris,verde,marron,lila,multicolor
+        relationships:
+            hasMany: RopaHasProducto
+
+    Producto:
+        nombre: string:50
+        descripcion: string:200 nullable
+        precio: decimal:8,2
+        stock: integer nullable
+        isRopa: bool nullable
+        asociacion_id: id foreign:asociacion
+        relationships:
+            hasMany: RopaHasProducto, Imagen, CategoriaHasProducto, ProductoHasPedido, Comentario
+
+    RopaHasProducto:
+        producto_id: id foreign:producto
+        ropaTipoProducto_id: id foreign:RopaTipoProduct
+        cantidad: integer
+        relationships:
+            belongsTo: Producto, RopaTipoProducto
+
+    Imagen:
+        url: string:100
+        producto_id: id foreign:producto
+        relationships:
+            belongsTo: Producto
+
+    Categoria:
+        nombre: string:50
+        descripcion: string:200 nullable
+        relationships:
+            hasMany: CategoriaHasProducto
+
+    CategoriaHasProducto:
+        producto_id: id foreign:producto
+        categoria_id: id foreign:categoria
+        relationships:
+            belongsTo: Producto, Categoria
+
+    Pedido:
+        estado: enum:enProceso,tramitado
+        fechaEntregado: date nullable
+        user_id: id foreign:user
+        relationships:
+            hasMany: ProductoHasPedido
+            belongsTo: User
+
+    ProductoHasPedido:
+        producto_id: id foreign:producto
+        pedido_id: id foreign:pedido
+        relationships:
+            belongsTo: Producto, Pedido
+
+    Comentario:
+        text: string:250 nullable
+        valoracion: enum:1,2,3,4,5,6,7,8,9,10
+        producto_id: id foreign:producto
+        user_id: id foreign:user
+        relationships:
+            belongsTo: Producto, User
+
+seeders: Asociacion, UserHasAsociacion, RopaTipoProducto, Producto, RopaHasProducto, Imagen, Categoria, CategoriaHasProducto, Pedido, ProductoHasPedido, Comentario

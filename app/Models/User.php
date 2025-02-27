@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -24,7 +25,10 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'telf',
+        'direccion',
         'password',
+        'admin',
     ];
 
     /**
@@ -47,11 +51,27 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'admin' => 'boolean',
         ];
     }
 
-    public function asociacion(): HasMany
+    protected static function boot()
     {
-        return $this->hasMany(Asociacion::class);
+        parent::boot();
+
+        static::creating(function ($user) {
+            $user->password = bcrypt('password');
+        });
     }
+
+    public function asociacion()
+    {
+        return $this->belongsToMany(Asociacion::class, 'user_has_asociacions');
+    }
+
+    public function pedido()
+    {
+        return $this->hasMany(Pedido::class);
+    }
+
 }

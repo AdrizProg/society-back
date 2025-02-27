@@ -6,9 +6,9 @@
 
     git pull origin master
 
-    php artisan optimize:clear
+    composer install
 
-    sudo service php8.3-fm-reload
+    php artisan optimize
 
     npm run build
 
