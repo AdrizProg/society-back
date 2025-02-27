@@ -20,6 +20,7 @@ use App\Http\Controllers\Api\v1\RopaHasProductoController;
 use App\Http\Controllers\Api\v1\UserController;
 use App\Http\Controllers\Api\v1\UserHasAsociacionController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Orion\Facades\Orion;
@@ -30,6 +31,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+Route::post('/register', [RegisteredUserController::class, 'store']);
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth:sanctum');
 
 // Subir Imagenes
