@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api\v1;
 
+use Auth;
+use Illuminate\Foundation\Auth\User;
 use Orion\Concerns\DisableAuthorization;
 use Orion\Concerns\DisablePagination;
 use Orion\Http\Controllers\Controller;
@@ -15,7 +17,7 @@ class AsociacionController extends Controller
      */
     // Orion
     use DisablePagination;
-    use DisableAuthorization;
+    // use DisableAuthorization;
     protected $model = Asociacion::class;
 
     public function index(Request $request)
@@ -40,9 +42,17 @@ class AsociacionController extends Controller
 
     public function pendientes()
     {
-        return response()->json(Asociacion::where('aprobados', 0)->get());
-    }
+        $user = Auth::user();
 
+        // Verifica si el usuario es admin
+        $esAdmin = User::where('admin', 1)->where('id', $user->id)->exists();
+
+        if ($esAdmin) {
+            return response()->json(Asociacion::where('aprobados', 0)->get());
+        }
+
+        return response()->json(['error' => 'No autorizado'], 403);
+    }
     public function aprobados($id)
     {
         $asociacion = Asociacion::findOrFail($id);

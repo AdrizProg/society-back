@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\v1\ComentariosProductoController;
 use App\Http\Controllers\Api\v1\ImagenController;
 use App\Http\Controllers\Api\v1\PedidoController;
 use App\Http\Controllers\Api\v1\PedidoHasProductoController;
+use App\Http\Controllers\Api\v1\PedidoUsuariosController;
 use App\Http\Controllers\Api\v1\ProductoComentariosController;
 use App\Http\Controllers\Api\v1\ProductoController;
 use App\Http\Controllers\Api\v1\ProductoHasCategoriaController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\Api\v1\RopaHasProductoController;
 // use App\Http\Controllers\Api\v1\RopaTipoProductoController;
 use App\Http\Controllers\Api\v1\UserController;
 use App\Http\Controllers\Api\v1\UserHasAsociacionController;
+use App\Http\Controllers\Api\v1\UsuarioPedidosController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Http\Request;
@@ -38,9 +40,9 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->midd
 Route::post('/imagenes', [ImagenController::class, 'store']);
 
 // Optener las asociaciones que estan pendientes para el panel de user
-Route::get('/asociaciones/pendientes', [AsociacionController::class, 'pendientes']);
+Route::middleware('auth:sanctum')->get('/asociaciones/pendientes', [AsociacionController::class, 'pendientes']);
 // Actualizar la asociacion para que se apruebe o se rechace
-Route::put('/asociaciones/{id}/aprobados', [AsociacionController::class, 'aprobados']);
+Route::middleware('auth:sanctum')->put('/asociaciones/{id}/aprobados', [AsociacionController::class, 'aprobados']);
 
 Route::group(['as' => 'api.'], function () {
 
@@ -61,6 +63,9 @@ Route::group(['as' => 'api.'], function () {
     // Relaciones asociacion con productos y producto con asociaciones
     Orion::hasManyResource('asociaciones', 'productos', AsociacionesProductoController::class);
     Orion::hasManyResource('productos', 'asociaciones', ProductosAsociacionesController::class);
+
+    Orion::hasManyResource('pedidos', 'usuarios', PedidoUsuariosController::class);
+    Orion::hasManyResource('usuarios', 'pedidos', UsuarioPedidosController::class);
 
     // Relaciones categoria con productos y producto con categorias
     Orion::belongsToManyResource('categorias', 'productos', CategoriaHasProductoController::class);
