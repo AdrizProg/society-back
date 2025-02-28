@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\v1;
 
+use App\Http\Requests\AsociacionRequest;
 use Auth;
 use Illuminate\Foundation\Auth\User;
 use Orion\Concerns\DisableAuthorization;
@@ -17,8 +18,9 @@ class AsociacionController extends Controller
      */
     // Orion
     use DisablePagination;
-    // use DisableAuthorization;
+    use DisableAuthorization;
     protected $model = Asociacion::class;
+    protected $request = AsociacionRequest::class;
 
     public function index(Request $request)
     {

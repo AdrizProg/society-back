@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\v1;
 
+use App\Http\Requests\ProductoRequest;
 use Orion\Http\Controllers\Controller;
 use App\Models\Producto;
 use Orion\Concerns\DisableAuthorization;
@@ -14,6 +15,7 @@ class ProductoController extends Controller
     use DisableAuthorization;
 
     protected $model = Producto::class;
+    protected $request = ProductoRequest::class;
 
     public function index(Request $request)
     {

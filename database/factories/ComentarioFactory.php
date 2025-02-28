@@ -24,7 +24,7 @@ class ComentarioFactory extends Factory
     {
         return [
             'text' => fake()->text(250),
-            'valoracion' => fake()->randomElement(["1","2","3","4","5","6","7","8","9","10"]),
+            'valoracion' => fake()->randomElement(["1","2","3","4","5"]),
             'producto_id' => Producto::factory(),
             'user_id' => User::factory(),
         ];
