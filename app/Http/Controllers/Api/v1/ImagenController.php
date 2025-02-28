@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\v1;
 
+use App\Http\Requests\ImagenRequest;
 use Orion\Http\Controllers\Controller;
 use App\Models\Imagen;
 use Illuminate\Http\Request;
@@ -16,6 +17,7 @@ class ImagenController extends Controller
     use DisablePagination;
     use DisableAuthorization;
     protected $model = Imagen::class;
+    protected $request = ImagenRequest::class;
 
     public function store(Request $request)
     {
