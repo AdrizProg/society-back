@@ -24,6 +24,7 @@ class Asociacion extends Model
         'direccion',
         'descripcion',
         'imagenPrincipal',
+        'logo',
         'aprobados',
         'user_id',
 
